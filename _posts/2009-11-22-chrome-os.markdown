@@ -1,0 +1,32 @@
+---
+layout: post
+status: publish
+published: true
+title: Chrome OS
+author:
+  display_name: Chris Haynie
+  login: admin
+  email: chris@chrishaynie.com
+  url: http://www.chrishaynie.com/
+author_login: admin
+author_email: chris@chrishaynie.com
+author_url: http://www.chrishaynie.com/
+wordpress_id: 102
+wordpress_url: http://chrishaynie.com/?p=102
+date: '2009-11-22 11:42:33 +0000'
+date_gmt: '2009-11-22 17:42:33 +0000'
+categories:
+- Uncategorized
+tags: []
+comments:
+- id: 976
+  author: uber
+  author_email: ryan@blankbmx.com
+  author_url: http://ryanuber.com
+  date: '2010-05-08 01:06:16 +0000'
+  date_gmt: '2010-05-08 07:06:16 +0000'
+  content: oh dude -- totally bring back your old skool site with the sax logo and
+    all. you gotsa keeps it real son!
+---
+<p>I've been playing with google's Chromium-OS lately, following the instructions <a href="http:&#47;&#47;sites.google.com&#47;a&#47;chromium.org&#47;dev&#47;chromium-os&#47;building-chromium-os&#47;build-instructions">here<&#47;a> I was able to get it booted off my eee-pc Netbook. In order to build it I first created a virtual machine on and installed a fresh copy of Ubuntu 9.10 (Karmic).</p>
+<p><a href="http:&#47;&#47;chrishaynie.com&#47;wp-content&#47;uploads&#47;2009&#47;11&#47;chrome_os_eeepc.jpg"><img class="alignnone size-medium wp-image-104" title="chrome_os_eeepc" src="http:&#47;&#47;chrishaynie.com&#47;wp-content&#47;uploads&#47;2009&#47;11&#47;chrome_os_eeepc-225x300.jpg" alt="chrome_os_eeepc" width="225" height="300" &#47;><&#47;a></p>
