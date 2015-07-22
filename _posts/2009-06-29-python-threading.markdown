@@ -23,7 +23,7 @@ tags:
 - python
 comments: []
 ---
-<p>In order to speed up some of my scripts I've implemented threading using python. Some scripts now run in 1/10th the time they used to as a result.&nbsp; Here I will try to illustrate some of the key points, hopefully it will be useful to anyone.</p>
+<p>In order to speed up some of my scripts I've implemented threading using python. Some scripts now run in 1/10th the time they used to as a result. Here I will try to illustrate some of the key points, hopefully it will be useful to anyone.</p>
 <pre lang="python">
 #!/usr/bin/python
 import sys
@@ -54,7 +54,7 @@ for c in cmdlist:
     c.join()
     print "### %s:n%s" % (c.server,c.stdout),
 print "## Done"
-</pre></p>
+</pre>
 <p>In my example we loop through servers[] and for each server[] we run the specified command on them, in their own thread! 3 servers in the above example, not a big deal, what if you have 20 servers? 40 servers? huge speed improvement.</p>
 <p>The script can be easily extended to say... read the servers list in from a configuration file, or accept the 'command' from the command line arguments, (argv[1:]) etc.</p>
 <p>Enjoy.</p>
