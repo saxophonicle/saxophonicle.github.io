@@ -25,13 +25,19 @@ tags:
 comments: []
 ---
 <p>Test</p>
-<pre lang="java">public class Hello {<br />
-  public static void main(String[] args) {<br />
-    System.out.println("Hello World!");<br />
-  }<br />
-}</pre></p>
-<pre lang="ruby">class Example<br />
-  def example(arg1)<br />
+<p>
+<pre lang="java">public class Hello {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+  }
+}
+</pre>
+</p>
+<p>
+<pre lang="ruby">class Example
+  def example(arg1)
     return "Hello: " + arg1.to_s<br />
-  end<br />
-end</pre></p>
+  end
+end
+</pre>
+</p>

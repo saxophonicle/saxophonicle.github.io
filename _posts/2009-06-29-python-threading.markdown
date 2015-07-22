@@ -25,35 +25,35 @@ comments: []
 ---
 <p>In order to speed up some of my scripts I've implemented threading using python. Some scripts now run in 1/10th the time they used to as a result.&nbsp; Here I will try to illustrate some of the key points, hopefully it will be useful to anyone.</p>
 <pre lang="python">
-#!/usr/bin/python<br />
-import sys<br />
-import subprocess<br />
-from threading import Thread</p>
-<p>class MyThread(Thread):<br />
-    def __init__(self,server,cmd):<br />
-        Thread.__init__(self)<br />
-        self.server = server<br />
-        self.cmd = cmd<br />
-        self.status = -1<br />
-    def run(self):<br />
-        proc = subprocess.Popen('ssh %s %s' % (self.server,self.cmd),<br />
-                       shell=True,<br />
-                       stdin=subprocess.PIPE,<br />
-                       stdout=subprocess.PIPE,<br />
-                       stderr=subprocess.STDOUT,<br />
-                       )<br />
+#!/usr/bin/python
+import sys
+import subprocess
+from threading import Thread
+class MyThread(Thread):
+    def __init__(self,server,cmd):
+        Thread.__init__(self)
+        self.server = server
+        self.cmd = cmd
+        self.status = -1
+    def run(self):
+        proc = subprocess.Popen('ssh %s %s' % (self.server,self.cmd),
+                       shell=True,
+                       stdin=subprocess.PIPE,
+                       stdout=subprocess.PIPE,
+                       stderr=subprocess.STDOUT,
+                       )
         self.stdout, self.stderr = proc.communicate()</p>
-<p>servers = ['shell1.example.net','ssh2.mhost.com','examplebox.net']<br />
-command = 'uptime'<br />
-cmdlist = []<br />
-for srv in servers:<br />
-    run = MyThread(srv,command)<br />
-    cmdlist.append(run)<br />
+servers = ['shell1.example.net','ssh2.mhost.com','examplebox.net']
+command = 'uptime'
+cmdlist = []
+for srv in servers:
+    run = MyThread(srv,command)
+    cmdlist.append(run)
     run.start()</p>
-<p>for c in cmdlist:<br />
-    c.join()<br />
-    print "### %s:n%s" % (c.server,c.stdout),<br />
-print "## Done"<br />
+for c in cmdlist:
+    c.join()
+    print "### %s:n%s" % (c.server,c.stdout),
+print "## Done"
 </pre></p>
 <p>In my example we loop through servers[] and for each server[] we run the specified command on them, in their own thread! 3 servers in the above example, not a big deal, what if you have 20 servers? 40 servers? huge speed improvement.</p>
 <p>The script can be easily extended to say... read the servers list in from a configuration file, or accept the 'command' from the command line arguments, (argv[1:]) etc.</p>

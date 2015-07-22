@@ -47,14 +47,14 @@ HASH="$(date +%s|md5sum|awk '{print $1}')"
 FNAME="$DIR$HASH"
 if [ -z $1 ]
 then
-	FNAME="$FNAME.txt"<br />
-	xsel>$FNAME<br />
+	FNAME="$FNAME.txt"
+	xsel>$FNAME
 else
-	FNAME="$FNAME.jpg"<br />
-	/usr/bin/convert -bordercolor white -border 5 $1 $1<br />
-	/usr/bin/convert -bordercolor black -border 1 $1 $1<br />
-	/usr/bin/convert -quality 75 $1 $FNAME<br />
-	rm -f $1<br />
+	FNAME="$FNAME.jpg"
+	/usr/bin/convert -bordercolor white -border 5 $1 $1
+	/usr/bin/convert -bordercolor black -border 1 $1 $1
+	/usr/bin/convert -quality 75 $1 $FNAME
+	rm -f $1
 fi
 scp $FNAME $HOST:public_html/dev.chrishaynie.com/html/snippets/
 echo http://slice.chrishaynie.com/snippets/$(basename $FNAME)|xsel -i

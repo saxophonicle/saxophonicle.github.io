@@ -49,96 +49,94 @@ comments:
 <p>JackSMS does some cool stuff like, say someone tries to access your laptop while you're not there - the built in isight camera will take their picture and email it then, so I wanted to use JackSMS as well.</p>
 <p>Proximity allows you to set scripts for when you arrive or when you leave, so here are the applescripts I used:</p>
 <p>lock.scpt:</p>
-<pre lang="applescript">﻿tell application "JackSMS" to set lock screen to true</pre><br />
+<pre lang="applescript">﻿tell application "JackSMS" to set lock screen to true</pre>
 unlock.scpt:</p>
-<pre lang="applescript">﻿tell application "JackSMS" to set lock screen to false</pre><br />
+<pre lang="applescript">﻿tell application "JackSMS" to set lock screen to false</pre>
 courtesy of: <a title="http://www.macosxhints.com/article.php?story=2006061914363693" href="http://www.macosxhints.com/article.php?story=2006061914363693">http://www.macosxhints.com/article.php?story=2006061914363693</a></p>
-<p>update: a better proximity script, copied below, courtesy of:<br />
-<a title="http://pixelignition.net/better-proximity-applescript" href="http://pixelignition.net/better-proximity-applescript"> http://pixelignition.net/better-proximity-applescript</a><br />
-lock.scpt:<br />
-<spoiler></p>
+<p>update: a better proximity script, copied below, courtesy of:
+<a title="http://pixelignition.net/better-proximity-applescript" href="http://pixelignition.net/better-proximity-applescript"> http://pixelignition.net/better-proximity-applescript</a>
+lock.scpt:
+</p>
 <pre lang="applescript">
-global okflag<br />
-set okflag to false<br />
-set front_app to (path to frontmost application as Unicode text) -- So we can switch back to this after running the fade</p>
-<p>-- check if iTunes is running<br />
-tell application "System Events"<br />
-        if process "iTunes" exists then<br />
-                set okflag to true --iTunes is running<br />
-        end if<br />
-end tell</p>
-<p>if okflag is true then<br />
-        try<br />
-                tell application "iTunes"<br />
-                        set currentvolume to the sound volume<br />
-                        if (player state is playing) then<br />
-                                repeat<br />
-                                        --Fade down<br />
-                                        repeat with i from currentvolume to 0 by -1 --try by -4 on slower Macs<br />
-                                                set the sound volume to i<br />
-                                                delay 0.01 -- Adjust this to change fadeout duration (delete this line on slower Macs)<br />
-                                        end repeat<br />
-                                        pause<br />
-                                        --Restore original volume<br />
-                                        set the sound volume to currentvolume<br />
-                                        exit repeat<br />
-                                end repeat<br />
-                                set comment of current track to "Proximity Paused"<br />
-                        end if<br />
-                end tell<br />
-                tell application front_app<br />
-                        activate<br />
-                end tell<br />
-        on error<br />
-                beep<br />
-        end try<br />
-end if</p>
-<p>tell application "JackSMS" to set jack status to "on"<br />
-delay 1<br />
-tell application "DeskShade"<br />
-        lock<br />
-end tell<br />
-end run<br />
-</pre><br />
-</spoiler><br />
-unlock.scpt:<br />
-<spoiler></p>
+global okflag
+set okflag to false
+set front_app to (path to frontmost application as Unicode text) -- So we can switch back to this after running the fade
+-- check if iTunes is running
+tell application "System Events"
+        if process "iTunes" exists then
+                set okflag to true --iTunes is running
+        end if
+end tell
+if okflag is true then
+        try
+                tell application "iTunes"
+                        set currentvolume to the sound volume
+                        if (player state is playing) then
+                                repeat
+                                        --Fade down
+                                        repeat with i from currentvolume to 0 by -1 --try by -4 on slower Macs
+                                                set the sound volume to i
+                                                delay 0.01 -- Adjust this to change fadeout duration (delete this line on slower Macs)
+                                        end repeat
+                                        pause
+                                        --Restore original volume
+                                        set the sound volume to currentvolume
+                                        exit repeat
+                                end repeat
+                                set comment of current track to "Proximity Paused"
+                        end if
+                end tell
+                tell application front_app
+                        activate
+                end tell
+        on error
+                beep
+        end try
+end if
+tell application "JackSMS" to set jack status to "on"
+delay 1
+tell application "DeskShade"
+        lock
+end tell
+end run
+</pre>
+unlock.scpt:
+</p>
 <pre lang="applescript">
-tell application "ScreenSaverEngine" to quit<br />
-tell application "DeskShade"<br />
-        unlock<br />
-        quit<br />
-end tell<br />
-tell application "JackSMS"<br />
-        quit<br />
-end tell</p>
-<p>global okflag<br />
-set okflag to false<br />
+tell application "ScreenSaverEngine" to quit
+tell application "DeskShade"
+        unlock
+        quit
+end tell
+tell application "JackSMS"
+        quit
+end tell
+global okflag
+set okflag to false
 set front_app to (path to frontmost application as Unicode text) -- So we can switch back to this after running the fade</p>
-<p>-- check if iTunes is running<br />
-tell application "System Events"<br />
-        if process "iTunes" exists then<br />
-                set okflag to true --iTunes is running<br />
-        end if<br />
-end tell</p>
-<p>if okflag is true then<br />
-        try<br />
-                tell application "iTunes"<br />
-                        set currentvolume to the sound volume<br />
-                        if comment of current track is "Proximity Paused" then<br />
-                                set comment of current track to ""<br />
-                                play<br />
-                                repeat with j from 0 to currentvolume by 2 --try by 4 on slower Macs<br />
-                                        set the sound volume to j<br />
-                                end repeat<br />
-                        end if<br />
-                end tell<br />
-                tell application front_app<br />
-                        activate<br />
-                end tell<br />
-        on error<br />
-                beep<br />
-        end try<br />
-end if<br />
-</pre><br />
-</spoiler></p>
+- check if iTunes is running
+tell application "System Events"
+        if process "iTunes" exists then
+                set okflag to true --iTunes is running
+        end if
+end tell
+if okflag is true then
+        try
+                tell application "iTunes"
+                        set currentvolume to the sound volume
+                        if comment of current track is "Proximity Paused" then
+                                set comment of current track to ""
+                                play
+                                repeat with j from 0 to currentvolume by 2 --try by 4 on slower Macs
+                                        set the sound volume to j
+                                end repeat
+                        end if
+                end tell
+                tell application front_app
+                        activate
+                end tell
+        on error
+                beep
+        end try
+end if
+</pre>
