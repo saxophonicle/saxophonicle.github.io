@@ -27,34 +27,35 @@ comments: []
 <p><a href="http://chrishaynie.com/wp-content/uploads/2010/08/66b1c38661258dc3b201c52f0035956b.jpg"><img src="http://chrishaynie.com/wp-content/uploads/2010/08/66b1c38661258dc3b201c52f0035956b-300x183.jpg" alt="Screenshot Utility in CompizConfig Settings Manager" title="Screenshot Utility in CompizConfig Settings Manager" width="300" height="183" class="alignright size-medium wp-image-117" /></a></p>
 <p>I run Ubuntu on my workstation with compiz. You will need to install compizconfig-settings-manager, xsel, and ImageMagick for this all to work. Below is the script to perform the screenshot auto-magic, when combined with the compiz screenshot plugin.  I press the windows key on my keyboard and then click+drag I have an instant screenshot. </p>
 <pre lang="bash">
-FNAME="/home/chrisha/Documents/snippets/$(date +%s|md5sum|awk '{print $1}').jpg"</p>
-<p>/usr/bin/convert -bordercolor white -border 5 $1 $1<br />
-/usr/bin/convert -bordercolor black -border 1 $1 $1<br />
-/usr/bin/convert -quality 75 $1 $FNAME</p>
-<p>scp $FNAME slice:public_html/dev.chrishaynie.com/html/snippets/</p>
-<p>echo http://slice.chrishaynie.com/snippets/$(basename $FNAME)|xsel -i</p>
-<p>rm -f $1<br />
-</pre></p>
+FNAME="/home/chrisha/Documents/snippets/$(date +%s|md5sum|awk '{print $1}').jpg"
+/usr/bin/convert -bordercolor white -border 5 $1 $1
+/usr/bin/convert -bordercolor black -border 1 $1 $1
+/usr/bin/convert -quality 75 $1 $FNAME
+scp $FNAME slice:public_html/dev.chrishaynie.com/html/snippets/
+echo http://slice.chrishaynie.com/snippets/$(basename $FNAME)|xsel -i
+rm -f $1
+</pre>
 <p>Now then, lets say you want to send a large block of text - maybe its a snippet of code, maybe its the output of a command. Taking a screenshot of text isn't verfy efficient, which we can agree. Traditional solutions have been just pasting it into the chat window and spamming the receiver, using sites like pastebin.com, but now your text is publicly available, maybe you're wanting to send a snippet of some proprietary code or personal conversation.</p>
 <p>My buddy Tim over at http://h1tman.com/ advanced my above screenshot auto-upload to include text excerpts, which get uploaded as plain-text.  You bind his script to a keyboard shortcut and from there, you select the text, hit the keyboard shortcut and you're off and running. You can read his full howto in depth here http://www.h1tman.com/2010/08/clipboard-hacks-social-copypasta</p>
 <p>Now we get to the good part, I've combined both my original "screenshotuploader" with Tim's "textshot" into what I'm going to call snippets. Use the same script in the screenshot plugin and in your keyboard shortcut for textshots, use the same url and same folder to store them all, in one combined script below.</p>
+
 <pre lang="bash">
-#!/bin/bash</p>
-<p>DIR="/home/chrisha/Documents/snippets/"<br />
-HOST="slice.chrishaynie.com"<br />
-HASH="$(date +%s|md5sum|awk '{print $1}')"<br />
-FNAME="$DIR$HASH"</p>
-<p>if [ -z $1 ]<br />
-then<br />
+#!/bin/bash
+DIR="/home/chrisha/Documents/snippets/"
+HOST="slice.chrishaynie.com"
+HASH="$(date +%s|md5sum|awk '{print $1}')"
+FNAME="$DIR$HASH"
+if [ -z $1 ]
+then
 	FNAME="$FNAME.txt"<br />
 	xsel>$FNAME<br />
-else<br />
+else
 	FNAME="$FNAME.jpg"<br />
 	/usr/bin/convert -bordercolor white -border 5 $1 $1<br />
 	/usr/bin/convert -bordercolor black -border 1 $1 $1<br />
 	/usr/bin/convert -quality 75 $1 $FNAME<br />
 	rm -f $1<br />
-fi</p>
-<p>scp $FNAME $HOST:public_html/dev.chrishaynie.com/html/snippets/<br />
-echo http://slice.chrishaynie.com/snippets/$(basename $FNAME)|xsel -i<br />
-</pre></p>
+fi
+scp $FNAME $HOST:public_html/dev.chrishaynie.com/html/snippets/
+echo http://slice.chrishaynie.com/snippets/$(basename $FNAME)|xsel -i
+</pre>
