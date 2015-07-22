@@ -50,7 +50,7 @@ comments:
 <p>Proximity allows you to set scripts for when you arrive or when you leave, so here are the applescripts I used:</p>
 <p>lock.scpt:</p>
 <pre lang="applescript">﻿tell application "JackSMS" to set lock screen to true</pre>
-unlock.scpt:</p>
+unlock.scpt:
 <pre lang="applescript">﻿tell application "JackSMS" to set lock screen to false</pre>
 courtesy of: <a title="http://www.macosxhints.com/article.php?story=2006061914363693" href="http://www.macosxhints.com/article.php?story=2006061914363693">http://www.macosxhints.com/article.php?story=2006061914363693</a></p>
 <p>update: a better proximity script, copied below, courtesy of:
@@ -101,7 +101,6 @@ end tell
 end run
 </pre>
 unlock.scpt:
-</p>
 <pre lang="applescript">
 tell application "ScreenSaverEngine" to quit
 tell application "DeskShade"
