@@ -48,15 +48,18 @@ comments:
 <p><a title="http://www.macupdate.com/info.php/id/21860" href="http://www.macupdate.com/info.php/id/21860">http://www.macupdate.com/info.php/id/21860</a></p>
 <p>JackSMS does some cool stuff like, say someone tries to access your laptop while you're not there - the built in isight camera will take their picture and email it then, so I wanted to use JackSMS as well.</p>
 <p>Proximity allows you to set scripts for when you arrive or when you leave, so here are the applescripts I used:</p>
-<p>lock.scpt:</p>
+<p>lock.scpt:
 <pre lang="applescript">﻿tell application "JackSMS" to set lock screen to true</pre>
-unlock.scpt:
+</p>
+<p>unlock.scpt:
 <pre lang="applescript">﻿tell application "JackSMS" to set lock screen to false</pre>
-courtesy of: <a title="http://www.macosxhints.com/article.php?story=2006061914363693" href="http://www.macosxhints.com/article.php?story=2006061914363693">http://www.macosxhints.com/article.php?story=2006061914363693</a></p>
+</p>
+<p>courtesy of: <a title="http://www.macosxhints.com/article.php?story=2006061914363693" href="http://www.macosxhints.com/article.php?story=2006061914363693">http://www.macosxhints.com/article.php?story=2006061914363693</a></p>
 <p>update: a better proximity script, copied below, courtesy of:
 <a title="http://pixelignition.net/better-proximity-applescript" href="http://pixelignition.net/better-proximity-applescript"> http://pixelignition.net/better-proximity-applescript</a>
-lock.scpt:
 </p>
+<p>
+lock.scpt:
 <pre lang="applescript">
 global okflag
 set okflag to false
@@ -100,6 +103,8 @@ tell application "DeskShade"
 end tell
 end run
 </pre>
+</p>
+<p>
 unlock.scpt:
 <pre lang="applescript">
 tell application "ScreenSaverEngine" to quit
@@ -139,3 +144,4 @@ if okflag is true then
         end try
 end if
 </pre>
+</p>
