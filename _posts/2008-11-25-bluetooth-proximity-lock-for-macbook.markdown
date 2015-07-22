@@ -40,21 +40,21 @@ comments:
   content: werd
 ---
 <p>I wanted to have my macbook automatically lock and unlock based on if I am in the room or not automatically. Best way to do that I figured would be bluetooth, since I always have my phone on me, and it has bluetooth. From there I proceeded to google.</p>
-<p><a title="http:&#47;&#47;web.mac.com&#47;jhollington&#47;technocrat&#47;The_Technocrat&#47;Entries&#47;2007&#47;3&#47;18_Bluetooth_Proximity_Detection_on_OS_X.html" href="http:&#47;&#47;web.mac.com&#47;jhollington&#47;technocrat&#47;The_Technocrat&#47;Entries&#47;2007&#47;3&#47;18_Bluetooth_Proximity_Detection_on_OS_X.html">http:&#47;&#47;web.mac.com&#47;jhollington&#47;technocrat&#47;The_Technocrat&#47;Entries&#47;2007&#47;3&#47;18_Bluetooth_Proximity_Detection_on_OS_X.html<&#47;a></p>
+<p><a title="http://web.mac.com/jhollington/technocrat/The_Technocrat/Entries/2007/3/18_Bluetooth_Proximity_Detection_on_OS_X.html" href="http://web.mac.com/jhollington/technocrat/The_Technocrat/Entries/2007/3/18_Bluetooth_Proximity_Detection_on_OS_X.html">http://web.mac.com/jhollington/technocrat/The_Technocrat/Entries/2007/3/18_Bluetooth_Proximity_Detection_on_OS_X.html</a></p>
 <p>Pointed me to</p>
-<p><a title="http:&#47;&#47;www.apple.com&#47;downloads&#47;macosx&#47;system_disk_utilities&#47;proximity.html" href="http:&#47;&#47;www.apple.com&#47;downloads&#47;macosx&#47;system_disk_utilities&#47;proximity.html">http:&#47;&#47;www.apple.com&#47;downloads&#47;macosx&#47;system_disk_utilities&#47;proximity.html<&#47;a></p>
+<p><a title="http://www.apple.com/downloads/macosx/system_disk_utilities/proximity.html" href="http://www.apple.com/downloads/macosx/system_disk_utilities/proximity.html">http://www.apple.com/downloads/macosx/system_disk_utilities/proximity.html</a></p>
 <p>he also includes a script to automate syncing your phone book and such too</p>
 <p>Another utility in my searching, is called JackSMS</p>
-<p><a title="http:&#47;&#47;www.macupdate.com&#47;info.php&#47;id&#47;21860" href="http:&#47;&#47;www.macupdate.com&#47;info.php&#47;id&#47;21860">http:&#47;&#47;www.macupdate.com&#47;info.php&#47;id&#47;21860<&#47;a></p>
+<p><a title="http://www.macupdate.com/info.php/id/21860" href="http://www.macupdate.com/info.php/id/21860">http://www.macupdate.com/info.php/id/21860</a></p>
 <p>JackSMS does some cool stuff like, say someone tries to access your laptop while you're not there - the built in isight camera will take their picture and email it then, so I wanted to use JackSMS as well.</p>
 <p>Proximity allows you to set scripts for when you arrive or when you leave, so here are the applescripts I used:</p>
 <p>lock.scpt:</p>
-<pre lang="applescript">﻿tell application "JackSMS" to set lock screen to true<&#47;pre><br />
+<pre lang="applescript">﻿tell application "JackSMS" to set lock screen to true</pre><br />
 unlock.scpt:</p>
-<pre lang="applescript">﻿tell application "JackSMS" to set lock screen to false<&#47;pre><br />
-courtesy of: <a title="http:&#47;&#47;www.macosxhints.com&#47;article.php?story=2006061914363693" href="http:&#47;&#47;www.macosxhints.com&#47;article.php?story=2006061914363693">http:&#47;&#47;www.macosxhints.com&#47;article.php?story=2006061914363693<&#47;a></p>
+<pre lang="applescript">﻿tell application "JackSMS" to set lock screen to false</pre><br />
+courtesy of: <a title="http://www.macosxhints.com/article.php?story=2006061914363693" href="http://www.macosxhints.com/article.php?story=2006061914363693">http://www.macosxhints.com/article.php?story=2006061914363693</a></p>
 <p>update: a better proximity script, copied below, courtesy of:<br />
-<a title="http:&#47;&#47;pixelignition.net&#47;better-proximity-applescript" href="http:&#47;&#47;pixelignition.net&#47;better-proximity-applescript"> http:&#47;&#47;pixelignition.net&#47;better-proximity-applescript<&#47;a><br />
+<a title="http://pixelignition.net/better-proximity-applescript" href="http://pixelignition.net/better-proximity-applescript"> http://pixelignition.net/better-proximity-applescript</a><br />
 lock.scpt:<br />
 <spoiler></p>
 <pre lang="applescript">
@@ -99,8 +99,8 @@ tell application "DeskShade"<br />
         lock<br />
 end tell<br />
 end run<br />
-<&#47;pre><br />
-<&#47;spoiler><br />
+</pre><br />
+</spoiler><br />
 unlock.scpt:<br />
 <spoiler></p>
 <pre lang="applescript">
@@ -140,5 +140,5 @@ end tell</p>
                 beep<br />
         end try<br />
 end if<br />
-<&#47;pre><br />
-<&#47;spoiler></p>
+</pre><br />
+</spoiler></p>
